@@ -1,26 +1,57 @@
 import { Injectable } from '@nestjs/common';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
+import { Group } from '@prisma/client';
+import { PrismaService } from 'prisma/prisma.service';
+import { DeleteContacts } from './dto/delete-contact.dto';
 
 @Injectable()
 export class GroupService {
-  create(createGroupDto: CreateGroupDto) {
-    return 'This action adds a new group';
+  constructor(private prisma:PrismaService){
+  }
+  create(dto:CreateGroupDto) {
+   
+    return this.prisma.group.create({data:{name:dto.name, contacts:{connect:dto.contacts}}});
   }
 
   findAll() {
-    return `This action returns all group`;
+    return this.prisma.group.findMany({  include: {
+      _count: {
+        select: { contacts: true },
+      },
+      events:true,
+      contacts:true
+    },});
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} group`;
+    return this.prisma.group.findUnique({where:{id}, 
+      include:{
+      contacts:{
+        orderBy:{
+          lastname:'asc',
+        }
+      }
+      ,events:true
+    }});
   }
 
-  update(id: number, updateGroupDto: UpdateGroupDto) {
-    return `This action updates a #${id} group`;
+  update(id: number, updateGroupDto: Group) {
+    return this.prisma.group.update({where:{id},data:updateGroupDto});
+  }
+
+  deleteContacts(id:number, dto:DeleteContacts){
+    return this.prisma.group.update({
+      where:{id},
+      data:{
+        contacts:{
+          disconnect:dto.users
+        }
+      }
+    })
   }
 
   remove(id: number) {
-    return `This action removes a #${id} group`;
+    return this.prisma.group.delete({where:{id}});
   }
 }

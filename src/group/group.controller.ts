@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { GroupService } from './group.service';
 import { CreateGroupDto } from './dto/create-group.dto';
 import { UpdateGroupDto } from './dto/update-group.dto';
+import { Group } from '@prisma/client';
+import { DeleteContacts } from './dto/delete-contact.dto';
 
 @Controller('group')
 export class GroupController {
@@ -21,11 +23,15 @@ export class GroupController {
   findOne(@Param('id') id: string) {
     return this.groupService.findOne(+id);
   }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateGroupDto: UpdateGroupDto) {
-    return this.groupService.update(+id, updateGroupDto);
+  @Patch(':id/deleteUsers')
+  deleteContacts(@Param('id') id:string, @Body() dto:DeleteContacts){
+    return this.groupService.deleteContacts(+id, dto)
   }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() updateGroupDto: Group) {
+    return this.groupService.update(+id, updateGroupDto)
+  }
+  
 
   @Delete(':id')
   remove(@Param('id') id: string) {

@@ -18,8 +18,9 @@ model Group {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   name    String
-  contacts     ContactGroup[]
+  contacts     Contact[]
   events      Event[]
+  tags        Tag[]
 }
 
 model Contact {
@@ -28,6 +29,7 @@ model Contact {
   updatedAt   DateTime  @updatedAt
   firstname    String
   lastname    String
+  image       String?
   birth       DateTime? @db.Date
   country     String?
   city        String?
@@ -36,45 +38,22 @@ model Contact {
   post        String?
   nationality String?
   link        String?
-  languages   ContactLanguage[]
-  groups      ContactGroup[]
-  tags        ContactTag[]
+  languages   Language[]
+  groups      Group[]
+  tags        Tag[]
 }
 model Language  {
   id          Int       @id @default(autoincrement())
   name        String
-  contacts   ContactLanguage[]
+  contacts   Contact[]
 }
 model Tag {
   id        Int       @id @default(autoincrement())
-  name      String
-  contact   ContactTag[]
-}
-model ContactTag {
-  contact   Contact    @relation(fields: [contactId], references: [id])
-  contactId     Int 
-  tag   Tag @relation(fields: [tagId], references: [id])
-  tagId  Int 
-
-  @@id([contactId, tagId])
-}
-model ContactLanguage {
-  contact   Contact    @relation(fields: [contactId], references: [id])
-  contactId     Int 
-  language   Language @relation(fields: [languageId], references: [id])
-  languageId  Int 
-
-  @@id([contactId, languageId])
+  name      String  @unique
+  contacts   Contact[]
+  groups    Group[]
 }
 
-model ContactGroup {
-  contact   Contact    @relation(fields: [contactId], references: [id])
-  contactId     Int 
-  group   Group @relation(fields: [groupId], references: [id])
-  groupId  Int 
-
-  @@id([contactId, groupId])
-}
 
 model Company {
   id          Int       @id @default(autoincrement())
@@ -86,7 +65,10 @@ model Event {
   id          Int       @id @default(autoincrement())
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  username    String
+  name    String
+  description String
+  timeStart        DateTime
+  timeEnd        DateTime
   group       Group?    @relation(fields: [groupId], references: [id])
   groupId     Int
 }

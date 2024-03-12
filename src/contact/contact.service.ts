@@ -9,11 +9,27 @@ import { Contact } from '@prisma/client';
 export class ContactService {
   constructor(private prisma: PrismaService){}
   create(dto:Contact) {
-    return this.prisma.contact.create({data:dto});
+    return this.prisma.contact.create({data:{
+      firstname:dto.firstname,
+      lastname:dto.lastname,
+      
+      tags:{
+          connectOrCreate: {
+            where: {
+              name: 'ceo',
+            },
+            create: {
+              name: 'ceo',
+            },
+          },
+        },
+      
+    }
+    });
   }
 
   findAll() {
-    return this.prisma.contact.findMany(); 
+    return this.prisma.contact.findMany({include:{languages:true,tags:true,groups:true}}); 
   }
 
   findOne(id: number) {
