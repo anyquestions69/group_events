@@ -9,7 +9,7 @@ export class ContactController {
   constructor(private readonly contactService: ContactService) {}
 
   @Post()
-  create(@Body() dto:Contact) {
+  create(@Body() dto:CreateContactDto) {
     return this.contactService.create(dto);
   }
 

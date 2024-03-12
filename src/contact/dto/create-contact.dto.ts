@@ -3,7 +3,7 @@ export class CreateContactDto {
     firstname: string;
     lastname: string;
     birth:Date;
-    country:String;
-    city:String;
-
+    country:string;
+    city:string;
+    tags:[{id:number}]
 }
