@@ -32,7 +32,7 @@ model Contact {
   country     String?
   city        String?
   company       Company?    @relation(fields: [companyId], references: [id])
-  companyId     Int
+  companyId     Int?
   post        String?
   nationality String?
   link        String?
