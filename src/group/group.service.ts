@@ -11,7 +11,15 @@ export class GroupService {
   }
   create(dto:CreateGroupDto) {
    
-    return this.prisma.group.create({data:{name:dto.name, contacts:{connect:dto.contacts}}});
+    return this.prisma.group.create({data:{
+      name:dto.name, 
+      contacts:{
+        connect:dto.contacts
+      },
+      tags:{
+       connect:dto.tags
+      }
+    }});
   }
 
   findAll() {
@@ -20,7 +28,8 @@ export class GroupService {
         select: { contacts: true },
       },
       events:true,
-      contacts:true
+      contacts:true,
+      tags:true
     },});
   }
 
@@ -32,7 +41,8 @@ export class GroupService {
           lastname:'asc',
         }
       }
-      ,events:true
+      ,events:true,
+      tags:true
     }});
   }
 

@@ -12,16 +12,9 @@ export class ContactService {
     return this.prisma.contact.create({data:{
       firstname:dto.firstname,
       lastname:dto.lastname,
-      
+
       tags:{
-          connectOrCreate: {
-            where: {
-              name: 'ceo',
-            },
-            create: {
-              name: 'ceo',
-            },
-          },
+          connect:dto.tags
         },
       
     }
