@@ -18,7 +18,7 @@ model Group {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   name    String
-  contacts      Contact[]
+  contacts     ContactGroup[]
   events      Event[]
 }
 
@@ -28,8 +28,58 @@ model Contact {
   updatedAt   DateTime  @updatedAt
   firstname    String
   lastname    String
-  groups      Group[]
+  birth       DateTime? @db.Date
+  country     String?
+  city        String?
+  company       Company?    @relation(fields: [companyId], references: [id])
+  companyId     Int
+  post        String?
+  nationality String?
+  link        String?
+  languages   ContactLanguage[]
+  groups      ContactGroup[]
+  tags        ContactTag[]
+}
+model Language  {
+  id          Int       @id @default(autoincrement())
+  name        String
+  contacts   ContactLanguage[]
+}
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String
+  contact   ContactTag[]
+}
+model ContactTag {
+  contact   Contact    @relation(fields: [contactId], references: [id])
+  contactId     Int 
+  tag   Tag @relation(fields: [tagId], references: [id])
+  tagId  Int 
 
+  @@id([contactId, tagId])
+}
+model ContactLanguage {
+  contact   Contact    @relation(fields: [contactId], references: [id])
+  contactId     Int 
+  language   Language @relation(fields: [languageId], references: [id])
+  languageId  Int 
+
+  @@id([contactId, languageId])
+}
+
+model ContactGroup {
+  contact   Contact    @relation(fields: [contactId], references: [id])
+  contactId     Int 
+  group   Group @relation(fields: [groupId], references: [id])
+  groupId  Int 
+
+  @@id([contactId, groupId])
+}
+
+model Company {
+  id          Int       @id @default(autoincrement())
+  name        String
+  employees   Contact[]
 }
 
 model Event {
