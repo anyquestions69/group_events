@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { ImgService } from './img.service';
 import { CreateImgDto } from './dto/create-img.dto';
 import { UpdateImgDto } from './dto/update-img.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { multerOptions, multerConfig } from 'src/config/multer.config';
 
 @Controller('img')
 export class ImgController {
@@ -15,6 +17,13 @@ export class ImgController {
   @Get()
   findAll() {
     return this.imgService.findAll();
+  }
+  
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file',multerOptions))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(multerConfig.dest)
+    console.log(file);
   }
 
   @Get(':id')
