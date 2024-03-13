@@ -4,6 +4,7 @@ import { UpdateGroupDto } from './dto/update-group.dto';
 import { Group } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { DeleteContacts } from './dto/delete-contact.dto';
+import { AddContactDto } from './dto/add-contact.dto';
 
 @Injectable()
 export class GroupService {
@@ -49,7 +50,13 @@ export class GroupService {
   update(id: number, updateGroupDto: Group) {
     return this.prisma.group.update({where:{id},data:updateGroupDto});
   }
-
+  addContacts(id:number, dto:AddContactDto){
+    return this.prisma.group.update({where:{id},data:{
+      tags:{
+        connect:dto.contacts
+      }
+    }})
+  }
   deleteContacts(id:number, dto:DeleteContacts){
     return this.prisma.group.update({
       where:{id},

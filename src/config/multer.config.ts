@@ -1,7 +1,7 @@
 import { extname } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 import { diskStorage } from 'multer';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid'
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 // Multer configuration
@@ -30,7 +30,7 @@ export const multerOptions = {
         // Destination storage path details
         destination: (req: any, file: any, cb: any) => {
             const uploadPath = multerConfig.dest;
-            // Create folder if doesn't exist
+            console.log(uploadPath)
             if (!existsSync(uploadPath)) {
                 mkdirSync(uploadPath);
             }
@@ -43,3 +43,7 @@ export const multerOptions = {
         },
     }),
 };
+
+export class ConfigModule{
+
+}
