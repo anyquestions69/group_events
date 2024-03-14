@@ -7,9 +7,9 @@ import { UpdateEventDto } from './dto/update-event.dto';
 export class EventController {
   constructor(private readonly eventService: EventService) {}
 
-  @Post()
-  create(@Body() createEventDto: CreateEventDto) {
-    return this.eventService.create(createEventDto);
+  @Post('group/:id')
+  create(@Param('id')id:string, @Body() createEventDto: CreateEventDto) {
+    return this.eventService.create(+id,createEventDto);
   }
 
   @Get()

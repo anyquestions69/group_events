@@ -23,7 +23,22 @@ export class GroupService {
     }});
   }
 
-  findAll() {
+  findAll(name:string) {
+    if(name){
+      return this.prisma.group.findMany({ where:{
+        name:{
+          contains:name,
+          mode: 'insensitive'
+        }
+      }, include: {
+        _count: {
+          select: { contacts: true },
+        },
+        events:true,
+        contacts:true,
+        tags:true
+      },});
+    }
     return this.prisma.group.findMany({  include: {
       _count: {
         select: { contacts: true },
@@ -32,6 +47,7 @@ export class GroupService {
       contacts:true,
       tags:true
     },});
+    
   }
 
   findOne(id: number) {
@@ -52,10 +68,11 @@ export class GroupService {
   }
   addContacts(id:number, dto:AddContactDto){
     return this.prisma.group.update({where:{id},data:{
-      tags:{
+      contacts:{
         connect:dto.contacts
       }
-    }})
+    }, include:{contacts:true}},
+    )
   }
   deleteContacts(id:number, dto:DeleteContacts){
     return this.prisma.group.update({
@@ -65,6 +82,7 @@ export class GroupService {
           disconnect:dto.users
         }
       }
+      , include:{contacts:true}
     })
   }
 

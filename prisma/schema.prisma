@@ -41,6 +41,7 @@ model Contact {
   languages   Language[]
   groups      Group[]
   tags        Tag[]
+  events      Event[]
 }
 model Language  {
   id          Int       @id @default(autoincrement())
@@ -71,4 +72,5 @@ model Event {
   timeEnd        DateTime
   group       Group?    @relation(fields: [groupId], references: [id])
   groupId     Int
+  contacts    Contact[]
 }
