@@ -1,3 +1,5 @@
+import { JsonArray } from "@prisma/client/runtime/library";
+
 export class CreateContactDto {
     name: string;
     firstname: string;
@@ -6,5 +8,5 @@ export class CreateContactDto {
     country:string;
     city:string;
     link:string;
-    tags:[{id:number}]
+    tags:[number]
 }

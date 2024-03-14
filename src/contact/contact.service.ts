@@ -12,7 +12,10 @@ export class ContactService {
   constructor(private prisma: PrismaService){}
  
   create(dto:CreateContactDto, file) {
-    
+    let tags=[]
+    for(let i of dto.tags){
+      tags.push({id:+i})
+    }
     return this.prisma.contact.create({data:{
       firstname:dto.firstname,
       image:file.filename,
@@ -21,9 +24,7 @@ export class ContactService {
       country:dto.country,
       city:dto.city,
       link:dto.link,
-      tags: {connect:dto.tags}
-        
-      
+      tags: {connect:tags}
     }, include:{tags:true}
     });
   }
@@ -59,7 +60,6 @@ export class ContactService {
     return this.prisma.tag.findFirst({
       where:{name:tag},
       include:{
-      groups:true,
       contacts:true
     }
     })
