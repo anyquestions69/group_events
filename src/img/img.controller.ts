@@ -23,7 +23,7 @@ export class ImgController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', multerOptions))
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-   
+   console.log(file)
   }
 
   @Get(':id')

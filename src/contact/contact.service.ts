@@ -1,20 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseInterceptors } from '@nestjs/common';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 import { PrismaService } from 'prisma/prisma.service';
 import { Group } from 'src/group/entities/group.entity';
 import { Contact } from '@prisma/client';
+import { Express } from 'express';
+
 
 @Injectable()
 export class ContactService {
   constructor(private prisma: PrismaService){}
-  create(dto:CreateContactDto) {
+ 
+  create(dto:CreateContactDto, file) {
+    
     return this.prisma.contact.create({data:{
       firstname:dto.firstname,
+      image:file.filename,
       lastname:dto.lastname,
-      birth:dto.birth,
+      birth:new Date(dto.birth),
       country:dto.country,
       city:dto.city,
+      link:dto.link,
       tags: {connect:dto.tags}
         
       

@@ -5,5 +5,6 @@ export class CreateContactDto {
     birth:Date;
     country:string;
     city:string;
+    link:string;
     tags:[{id:number}]
 }

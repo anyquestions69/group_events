@@ -30,7 +30,6 @@ export const multerOptions = {
         // Destination storage path details
         destination: (req: any, file: any, cb: any) => {
             const uploadPath = multerConfig.dest;
-            console.log(uploadPath)
             if (!existsSync(uploadPath)) {
                 mkdirSync(uploadPath);
             }
