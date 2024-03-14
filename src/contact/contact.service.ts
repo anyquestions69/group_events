@@ -28,18 +28,55 @@ export class ContactService {
     });
   }
 
-  findAll() {
-    return this.prisma.contact.findMany({include:{languages:true,tags:true,groups:true}}); 
+  findAll(name:string, tag:string,country:string, city:string, post:string) {
+    const filters ={AND:[ ]}
+    if(name){
+      filters.AND.push({
+        OR:[
+          {firstname:{
+            contains:name,
+            mode: 'insensitive'
+          }},
+          {lastname:{
+            contains:name,
+            mode: 'insensitive'
+          }}
+        ]
+      })
+    }
+    if(country){
+      filters.AND.push({country:{contains:country,mode: 'insensitive'}})
+    }
+    if(city){
+      filters.AND.push({city:{contains:city,mode: 'insensitive'}})
+    }
+    if(post){
+      filters.AND.push({post:{contains:post,mode: 'insensitive'}})
+    }
+    return this.prisma.contact.findMany({where:filters,include:{languages:true,tags:true,groups:true}}); 
   }
   findByTag(tag:string){
-    return this.prisma.contact.findMany({
-      include:{tags:{
-        where:{name:tag}
-      },
+    return this.prisma.tag.findFirst({
+      where:{name:tag},
+      include:{
       groups:true,
-      company:true
+      contacts:true
     }
     })
+  }
+  findByName(name:string){
+    return this.prisma.contact.findMany({where:{
+      OR:[
+        {firstname:{
+          contains:name,
+          mode: 'insensitive'
+        }},
+        {lastname:{
+          contains:name,
+          mode: 'insensitive'
+        }}
+      ]
+    }})
   }
   findOne(id: number) {
     return this.prisma.contact.findUnique({where:{id}});

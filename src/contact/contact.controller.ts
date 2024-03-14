@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseInterceptors, UploadedFile, Query } from '@nestjs/common';
 import { ContactService } from './contact.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
@@ -18,18 +18,27 @@ export class ContactController {
   }
 
   @Get()
-  findAll() {
-    return this.contactService.findAll();
+  findAll(@Query('name') name: string, 
+          @Query('tag') tag: string,
+          @Query('country') country: string,
+          @Query('city') city: string,
+          @Query('post') post: string) {
+    return this.contactService.findAll(name,tag, country,city,post);
   }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.contactService.findOne(+id);
+  @Get('name')
+  findByName(@Query('name') name: string){
+    return this.contactService.findByName(name)
   }
   @Get('tag/:tag')
   findByTag(@Param('tag') tag:string){
     return this.contactService.findByTag(tag);
   }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.contactService.findOne(+id);
+  }
+  
+  
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto:Contact) {
     return this.contactService.update(+id, dto);
