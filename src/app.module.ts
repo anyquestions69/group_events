@@ -6,9 +6,10 @@ import { GroupModule } from './group/group.module';
 import { EventModule } from './event/event.module';
 import { TagModule } from './tag/tag.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { MailModule } from './mail/mail.module';
 
 @Module({
-  imports: [ContactModule, GroupModule, EventModule, TagModule],
+  imports: [ContactModule, GroupModule, EventModule, TagModule, MailModule],
   controllers: [AppController],
   providers: [AppService],
 })
