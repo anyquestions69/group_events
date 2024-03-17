@@ -29,6 +29,7 @@ model Contact {
   updatedAt   DateTime  @updatedAt
   firstname    String
   lastname    String
+  email       String?
   image       String?
   birth       DateTime? @db.Date
   country     String?

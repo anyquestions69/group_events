@@ -5,21 +5,24 @@ import { PrismaService } from 'prisma/prisma.service';
 import { Group } from 'src/group/entities/group.entity';
 import { Contact } from '@prisma/client';
 import { Express } from 'express';
+import { MailService } from 'src/mail/mail.service';
 
 
 @Injectable()
 export class ContactService {
-  constructor(private prisma: PrismaService){}
+  constructor(private prisma: PrismaService, private email:MailService){}
  
   create(dto:CreateContactDto, file) {
     let tags=[]
     for(let i of dto.tags){
       tags.push({id:+i})
     }
+    this.email.sendUserConfirmation(dto.email)
     return this.prisma.contact.create({data:{
       firstname:dto.firstname,
       image:file.filename,
       lastname:dto.lastname,
+      email:dto.email,
       birth:new Date(dto.birth),
       country:dto.country,
       city:dto.city,

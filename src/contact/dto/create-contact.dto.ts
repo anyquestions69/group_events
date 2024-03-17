@@ -5,6 +5,7 @@ export class CreateContactDto {
     firstname: string;
     lastname: string;
     birth:Date;
+    email:string;
     country:string;
     city:string;
     link:string;

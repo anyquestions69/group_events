@@ -1,23 +1,20 @@
 import { Module } from '@nestjs/common';
 import { MailService } from './mail.service';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports:[MailerModule.forRoot({
-    // transport: 'smtps://user@example.com:topsecret@smtp.example.com',
-    // or
     transport: {
-      host: 'smtp.example.com',
-      secure: false,
+      host: process.env.SMTP_SERVER,
+      port:+process.env.SMTP_PORT,
+      secure: true,
       auth: {
-        user: 'user@example.com',
-        pass: 'topsecret',
+        user: process.env.SMTP_EMAIL,
+        pass: process.env.SMTP_PASSWORD,
       },
-    },
-    defaults: {
-      from: '"No Reply" <noreply@example.com>',
-    },
-  }),],
+    }
+  }),ScheduleModule.forRoot()],
   providers: [MailService],
   exports: [MailService]
 })
