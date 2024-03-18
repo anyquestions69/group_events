@@ -3,10 +3,11 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { AddUser } from './dto/add-user.dto';
 import { PrismaService } from 'prisma/prisma.service';
 import { Event } from '@prisma/client';
+import { MailService } from 'src/mail/mail.service';
 
 @Injectable()
 export class EventService {
-  constructor(private prisma:PrismaService){
+  constructor(private prisma:PrismaService, private mail:MailService){
   }
   async create(groupId:number, dto: CreateEventDto) {
     let group = await this.prisma.group.findFirst({where:{id:groupId}, include:{contacts:true}})
@@ -14,6 +15,7 @@ export class EventService {
     for(let i of group.contacts){
       contacts.push({id:i.id})
     }
+    this.mail.addCronJob(dto.name,'juuzodes@yandex.ru',new Date(dto.timeStart))
     return this.prisma.event.create({data:{
       groupId:group.id,
       name:dto.name,
