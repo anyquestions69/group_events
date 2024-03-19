@@ -24,13 +24,14 @@ export class MailService {
 async addCronJob(name: string,  email:string, date:Date) {
   let seconds = date.getSeconds()
   let minutes = date.getMinutes()
-  let hours = date.getHours()
+  let hours = date.getHours()-3
   let day = date.getDay()
-  let month = date.getMonth()
+  console.log(day)
+  let month = date.getMonth()+1
   let year = date.getFullYear()
   let cronName=name+email+date.getTime()
-  const job = new CronJob(`${seconds} ${minutes} ${hours} ${day} ${month} *`, async () => {
-     await this.mailerService.sendMail({
+  const job = new CronJob(`${seconds} ${minutes} ${hours} ${day} ${month} *`,  () => {
+      this.mailerService.sendMail({
       to: email,
       from:process.env.SMTP_EMAIL,
       subject: name,
@@ -38,23 +39,16 @@ async addCronJob(name: string,  email:string, date:Date) {
         Новое уведомление
       `
     });
-    await this.schedulerRegistry.deleteCronJob(cronName);
-    const jobs1 = this.schedulerRegistry.getCronJobs();
-    console.log(jobs1)
+    //await this.schedulerRegistry.deleteCronJob(cronName);
+   
+    console.log('done')
   });
   
   this.schedulerRegistry.addCronJob(cronName, job);
   job.start();
   const jobs = this.schedulerRegistry.getCronJobs();
-    jobs.forEach((value, key, map) => {
-      let next;
-      try {
-        next = value.nextDate().toJSDate();
-      } catch (e) {
-        next = 'error: next fire date is in the past!';
-      }
-      console.log(`job: ${key} -> next: ${next}`);
-    })
+  console.log(jobs)
+   
   
 }
 
