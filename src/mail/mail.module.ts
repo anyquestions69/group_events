@@ -14,7 +14,7 @@ import { ScheduleModule } from '@nestjs/schedule';
         pass: process.env.SMTP_PASSWORD,
       },
     }
-  }),ScheduleModule.forRoot()],
+  })],
   providers: [MailService],
   exports: [MailService]
 })
