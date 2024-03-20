@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { Register } from './dto/register.dto';
@@ -22,7 +22,7 @@ export class AuthService {
   async signOn(dto:Register){
     const user = await this.usersService.findOne(dto.email);
     if(user){
-      throw new BadRequestException('Пользователь с таким email уже существует');
+      throw new ConflictException('Пользователь с таким email уже существует');
     }
     if(dto.password!==dto.password){
       throw new BadRequestException('Пароли не совпадают')

@@ -1,0 +1,859 @@
+_type: export
+__export_format: 4
+__export_date: 2024-03-20T13:32:20.910Z
+__export_source: insomnia.desktop.app:v8.6.1
+resources:
+  - _id: req_a2c39a5e70564a72908a4b890c156932
+    parentId: fld_451d5f3dd9244bf29a03db5a0f37fff4
+    modified: 1710941042326
+    created: 1710940993464
+    url: "{{ _.HOST }}/auth/login"
+    name: Вход
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"user@mail.ru",
+        	"password":"1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710940988410
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_451d5f3dd9244bf29a03db5a0f37fff4
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710940501644
+    created: 1710940501644
+    name: Авторизация
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1710940501644
+    _type: request_group
+  - _id: wrk_0f295c3e4626497aab476dd22ef10351
+    parentId: null
+    modified: 1710477480936
+    created: 1710261006829
+    name: group_events
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_d28ff953561c4768bfbbc990d4a01495
+    parentId: fld_451d5f3dd9244bf29a03db5a0f37fff4
+    modified: 1710940988349
+    created: 1710940505100
+    url: "{{ _.HOST }}/auth/registration"
+    name: Регистрация
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"example@yandex.ru",
+        	"password":"1234",
+        	"repass":"1234"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710940988310
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_218bff2567324ddf8099625c6079c85b
+    parentId: fld_0097e36651ad4cb39aa786d15c630830
+    modified: 1710419001793
+    created: 1710418929443
+    url: "{{ _.HOST }}/tag"
+    name: Создать тег
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"Китай"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710418937239
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0097e36651ad4cb39aa786d15c630830
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710416184037
+    created: 1710416184037
+    name: Теги
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1710416184037
+    _type: request_group
+  - _id: req_892c074609ff4070b8fe76baed3e4410
+    parentId: fld_0097e36651ad4cb39aa786d15c630830
+    modified: 1710428338630
+    created: 1710428303269
+    url: "{{ _.HOST }}/tag/:id"
+    name: Удалить тэг
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710418937139
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_616e703c1a684c768dbc42cfcd0ae6fa
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710452953319
+    created: 1710452903679
+    url: "{{ _.HOST }}/event/:id"
+    name: Событие
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710452903679
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "2"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_872569d758684ba0958a0d995d4c0051
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710414909050
+    created: 1710414909050
+    name: События
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1710414909051
+    _type: request_group
+  - _id: req_c21e81caa5d745dbba0a7e45c30d76d9
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710452245450
+    created: 1710452141345
+    url: "{{ _.HOST }}/event"
+    name: Все события
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710452141345
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_fad0c9848f5b4543a9f9222f3c68592a
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710796794728
+    created: 1710451472821
+    url: "{{ _.HOST }}/event/group/:id"
+    name: Добавить событие
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"Meeting№2",
+        	"description":"Outdoor meeting w/ colleagues",
+        	"timeStart":"2024-03-19 00:22:00.000",
+        	"timeEnd":"2024-09-08 15:30:00.000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710451472821
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "2"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7f8dc085dc884662a7f189768d35430e
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710477820903
+    created: 1710452743603
+    url: "{{ _.HOST }}/event/:id/add"
+    name: Добавить контакт в событие
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"contacts":[
+        		{"id":5},
+        		{"id":4}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710451472721
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0437e227d20a4754ab7d2be0e98f407f
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710453893448
+    created: 1710453798881
+    url: "{{ _.HOST }}/event/:id/delete"
+    name: Удалить контакт из события
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"contacts":[
+        		{"id":1},
+        		{"id":4}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710451472621
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "2"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5d174fe119e94e859c6f236847cd4260
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710477779273
+    created: 1710477598177
+    url: "{{ _.HOST }}/event/:id"
+    name: Изменить событие
+    description: ""
+    method: PATCH
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"asd",
+        	"description":"qwertyasdfg",
+        	"timeStart":"2024-04-10 08:00:00.000",
+        	"timeEnd":"2024-04-10 10:00:00.000"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710451472571
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3daa8e4e47b044858ebd1836cddbb66f
+    parentId: fld_872569d758684ba0958a0d995d4c0051
+    modified: 1710453923912
+    created: 1710453898889
+    url: "{{ _.HOST }}/event/:id"
+    name: Удалить событие
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710451472521
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a96e977b768a4dc293a9c11a26b89294
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710452222502
+    created: 1710418474072
+    url: "{{ _.HOST }}/group/:id"
+    name: Группа
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710418474072
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "2"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9e8b248de427409eb8256718e4600a68
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710412626408
+    created: 1710412626408
+    name: Группы
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1710412626408
+    _type: request_group
+  - _id: req_ae5e6467a76d4fdc8c7410b9f96cb42b
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710417902543
+    created: 1710265585543
+    url: "{{ _.HOST }}/group/"
+    name: Все группы
+    description: ""
+    method: GET
+    body:
+      mimeType: application/octet-stream
+      fileName: ""
+    parameters:
+      - id: pair_21e3051eb3184c91b6088005712e45c3
+        name: name
+        value: group
+        description: ""
+    headers:
+      - name: Content-Type
+        value: application/octet-stream
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412638671
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_aeb3b77250dc4166923d415452c7e670
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710417724695
+    created: 1710265517573
+    url: "{{ _.HOST }}/group"
+    name: Создать группу
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name":"group4",
+        	"contacts":[],
+        	"tags":[]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412638571
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_37be14fef2e34ce6b0bbaa3ecbd32122
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710663345331
+    created: 1710333993473
+    url: "{{ _.HOST }}/group/:id/add"
+    name: Добавить контакт в группу
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: '{"contacts":[{"id":13}, {"id":3}]}'
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412638471
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "4"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_608789fd6bc746e79e9b3a003c3f87c7
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710418835832
+    created: 1710269839931
+    url: "{{ _.HOST }}/group/:id/delete"
+    name: Удаление контактов из группы
+    description: ""
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"users":[
+        		{"id":1}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412638371
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "4"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c7ba83e34ba94b4ca73e9fc7d1a6655b
+    parentId: fld_9e8b248de427409eb8256718e4600a68
+    modified: 1710417703959
+    created: 1710417554426
+    url: "{{ _.HOST }}/group/:id"
+    name: Удалить группу
+    description: ""
+    method: DELETE
+    body: {}
+    parameters:
+      - id: pair_e8779c22c9714ed6965a4318714d5535
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412638271
+    isPrivate: false
+    pathParameters:
+      - name: id
+        value: "1"
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e730ac9fe0d54164b025b132bfba3150
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710417791671
+    created: 1710414050516
+    url: "{{ _.HOST }}/contact/tag/:tag"
+    name: Контакты по тегу
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_e26a3d5bd9614fd9a566ae117227c5be
+        name: ""
+        value: ""
+        description: ""
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710414050516
+    isPrivate: false
+    pathParameters:
+      - name: tag
+        value: sport
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0e0be4c438e643a1b700fcd1e10975b3
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710412526310
+    created: 1710412526310
+    name: Контакты
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1710412526310
+    _type: request_group
+  - _id: req_0e51dba25a9344d78fea512d95e32028
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710414032328
+    created: 1710412863204
+    url: http://localhost:3000/contact/name?name=ivan
+    name: Контакты по имени/фамилии
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412863204
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5e0d4400e8074ef4b44798ff0abf054d
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710415054493
+    created: 1710261195523
+    url: http://localhost:3000/contact
+    name: Все контакты
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - id: pair_2a4e09baeac8485091cfd98c29764674
+        name: name
+        value: Иван
+        description: Имя/Фамилия
+        disabled: true
+      - id: pair_5452b75ac0634b86bf978c0bb3ec791a
+        name: country
+        value: Russia
+        description: Страна
+        disabled: true
+      - id: pair_227fc274a60649c6a4b253713ca37fc4
+        name: city
+        value: Moscow
+        description: Город
+        disabled: true
+      - id: pair_20e1f50dd90246f7ba160c309fd75753
+        name: post
+        value: Designer
+        description: Должность
+        disabled: true
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412594536
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_83d98a4694c84fbb836cbf8d4d1362be
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710662670281
+    created: 1710261017002
+    url: http://localhost:3000/contact
+    name: Создать контакт
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - name: firstname
+          value: danil
+          id: pair_0b0067f5ce9a4e938e8a58e30a987728
+        - id: pair_65b2038ae4b14e4ab6be3831efbd4c5f
+          name: lastname
+          value: danilov
+          description: ""
+        - id: pair_865669720b01468c867dd162acc9e6d0
+          name: link
+          value: https://t.me/seraphic_grin
+          description: ""
+        - id: pair_ca505e1538354ba2b8d34cabeca42916
+          name: country
+          value: Russia
+          description: ""
+        - id: pair_566f741ef2c54fee8939ca8c1b5fdff8
+          name: city
+          value: Saint-Petersburg
+          description: ""
+        - id: pair_1cd6c52f00af4bc18ead762cb4f82d5b
+          name: birth
+          value: 2003-08-07 00:00:00.000
+          description: ""
+        - id: pair_a9000bd1945543e799f5ac14a0e79891
+          name: file
+          value: ""
+          description: ""
+          type: file
+          fileName: /Users/public_hysteria/Pictures/photo_2022-01-22 12.08.26.jpeg
+        - id: pair_a0c8ba07d3584060ab8af514560dc8eb
+          name: companyId
+          value: ""
+          description: ""
+        - id: pair_7936f82de8984aeba62dc085fab4d128
+          name: post
+          value: Designer
+          description: ""
+        - id: pair_9fb5cc0aab844971afa5ba00976d0e04
+          name: tags
+          value: "1"
+          description: ""
+        - id: pair_9934dc326f594c6599bc76b0489a374e
+          name: tags
+          value: "2"
+          description: ""
+        - id: pair_32ef80546a3840738cb308e2f9885132
+          name: email
+          value: juuzodes@yandex.ru
+          description: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412594436
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_40b3a2a252d94c529de1748032dbad07
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710412740332
+    created: 1710412513944
+    url: http://localhost:3000/contact/1
+    name: Показать контакт
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412594336
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7f2fdaa6de1942739db98bca0d112304
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710412815938
+    created: 1710412744922
+    url: http://localhost:3000/contact/1
+    name: Изменить контакт
+    description: ""
+    method: PATCH
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412594286
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_85a5896f07dd4bcd8bc8f2c09f75b9b3
+    parentId: fld_0e0be4c438e643a1b700fcd1e10975b3
+    modified: 1710412812108
+    created: 1710412786190
+    url: http://localhost:3000/contact/1
+    name: Удалить контакт
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/8.6.1
+    authentication: {}
+    metaSortKey: -1710412594236
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_dfd93854da3c63c6ef21562b157616fcf4b4ca17
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710417658861
+    created: 1710261006831
+    name: Base Environment
+    data:
+      HOST: http://localhost:3000
+    dataPropertyOrder:
+      "&":
+        - HOST
+    color: null
+    isPrivate: false
+    metaSortKey: 1710261006831
+    _type: environment
+  - _id: jar_dfd93854da3c63c6ef21562b157616fcf4b4ca17
+    parentId: wrk_0f295c3e4626497aab476dd22ef10351
+    modified: 1710261006832
+    created: 1710261006832
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar

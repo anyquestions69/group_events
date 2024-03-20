@@ -38,7 +38,7 @@ model Contact {
   company       String?
   post        String?
   nationality String?
-  link        String?
+  telegram        String?
   languages   Language[]
   groups      Group[]
   tags        Tag[]
