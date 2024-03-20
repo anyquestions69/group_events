@@ -14,7 +14,7 @@ export class EventService {
     let contacts=[]
     for(let i of group.contacts){
       contacts.push({id:i.id})
-      this.schedule.addCronJob(dto.name,dto.description,i.email,new Date(dto.timeStart))
+      this.schedule.addCronJob(dto.name,dto.description,i.email,new Date(dto.timeStart), '30s', new Date(dto.timeEnd))
     }
    
     return this.prisma.event.create({data:{
