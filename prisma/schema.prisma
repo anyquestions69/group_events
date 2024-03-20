@@ -64,8 +64,9 @@ model Event {
   updatedAt   DateTime  @updatedAt
   name    String
   description String
+  every       String?
   timeStart        DateTime
-  timeEnd        DateTime
+  timeEnd        DateTime?
   group       Group?    @relation(fields: [groupId], references: [id])
   groupId     Int
   contacts    Contact[]
