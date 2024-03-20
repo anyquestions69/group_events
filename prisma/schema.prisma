@@ -30,12 +30,12 @@ model Contact {
   firstname    String
   lastname    String
   email       String?
+  whatsapp    String?
   image       String?
   birth       DateTime? @db.Date
   country     String?
   city        String?
-  company       Company?    @relation(fields: [companyId], references: [id])
-  companyId     Int?
+  company       String?
   post        String?
   nationality String?
   link        String?
@@ -57,11 +57,6 @@ model Tag {
 }
 
 
-model Company {
-  id          Int       @id @default(autoincrement())
-  name        String
-  employees   Contact[]
-}
 
 model Event {
   id          Int       @id @default(autoincrement())

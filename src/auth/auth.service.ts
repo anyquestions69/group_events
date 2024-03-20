@@ -3,14 +3,15 @@ import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { Register } from './dto/register.dto';
 import { ExceptionsHandler } from '@nestjs/core/exceptions/exceptions-handler';
+import { Login } from './dto/login.dto';
 
 @Injectable()
 export class AuthService {
   constructor(private usersService: UsersService, private jwtService: JwtService) {}
 
-  async signIn(email: string, pass: string) {
-    const user = await this.usersService.findOne(email);
-    if (user?.password !== pass) {
+  async signIn(dto: Login) {
+    const user = await this.usersService.findOne(dto.email);
+    if (user?.password !== dto.password) {
       throw new UnauthorizedException();
     }
     const payload = { sub: user.id, email: user.email };
