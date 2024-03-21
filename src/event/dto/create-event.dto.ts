@@ -3,4 +3,5 @@ export class CreateEventDto {
     description:string
     timeStart:Date
     timeEnd:Date
+    every:string
 }
