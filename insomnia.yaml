@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2024-03-20T13:32:20.910Z
+__export_date: 2024-03-21T08:43:01.630Z
 __export_source: insomnia.desktop.app:v8.6.1
 resources:
   - _id: req_a2c39a5e70564a72908a4b890c156932
@@ -215,7 +215,7 @@ resources:
     _type: request
   - _id: req_fad0c9848f5b4543a9f9222f3c68592a
     parentId: fld_872569d758684ba0958a0d995d4c0051
-    modified: 1710796794728
+    modified: 1711010535222
     created: 1710451472821
     url: "{{ _.HOST }}/event/group/:id"
     name: Добавить событие
@@ -227,8 +227,9 @@ resources:
         {
         	"name":"Meeting№2",
         	"description":"Outdoor meeting w/ colleagues",
-        	"timeStart":"2024-03-19 00:22:00.000",
-        	"timeEnd":"2024-09-08 15:30:00.000"
+        	"timeStart":"2024-03-21T00:25:00.000Z",
+        	"timeEnd":"2024-03-21T00:26:30.000Z",
+        	"every":"15m"
         }
     parameters: []
     headers:
@@ -241,7 +242,7 @@ resources:
     isPrivate: false
     pathParameters:
       - name: id
-        value: "2"
+        value: "8"
     settingStoreCookies: true
     settingSendCookies: true
     settingDisableRenderRequestBody: false
@@ -486,7 +487,7 @@ resources:
     _type: request
   - _id: req_37be14fef2e34ce6b0bbaa3ecbd32122
     parentId: fld_9e8b248de427409eb8256718e4600a68
-    modified: 1710663345331
+    modified: 1710969746343
     created: 1710333993473
     url: "{{ _.HOST }}/group/:id/add"
     name: Добавить контакт в группу
@@ -494,7 +495,7 @@ resources:
     method: PUT
     body:
       mimeType: application/json
-      text: '{"contacts":[{"id":13}, {"id":3}]}'
+      text: '{"contacts":[{"id":13}]}'
     parameters: []
     headers:
       - name: Content-Type
@@ -506,7 +507,7 @@ resources:
     isPrivate: false
     pathParameters:
       - name: id
-        value: "4"
+        value: "8"
     settingStoreCookies: true
     settingSendCookies: true
     settingDisableRenderRequestBody: false
