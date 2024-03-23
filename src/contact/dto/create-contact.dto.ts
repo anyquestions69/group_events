@@ -2,8 +2,6 @@ import { JsonArray } from "@prisma/client/runtime/library";
 import { IsDateString, IsString, isString } from "class-validator";
 
 export class CreateContactDto {
-    @IsString()
-    name: string;
     firstname: string;
     lastname: string;
     @IsDateString()

@@ -12,23 +12,28 @@ export class ContactService {
   constructor(private prisma: PrismaService, private email:MailService){}
  
   create(dto:CreateContactDto, file) {
-    let tags=[]
-    for(let i of dto.tags){
-      tags.push({id:+i})
+    try{
+      let tags=[]
+      for(let i of dto.tags){
+        tags.push({id:+i})
+      }
+      this.email.sendUserConfirmation(dto.email)
+      return this.prisma.contact.create({data:{
+        firstname:dto.firstname,
+        image:file.filename,
+        lastname:dto.lastname,
+        email:dto.email,
+        birth:new Date(dto.birth),
+        country:dto.country,
+        city:dto.city,
+        telegram:dto.telegram,
+        tags: {connect:tags}
+      }, include:{tags:true}
+      });
+    }catch(e){
+      console.warn(e)
     }
-    this.email.sendUserConfirmation(dto.email)
-    return this.prisma.contact.create({data:{
-      firstname:dto.firstname,
-      image:file.filename,
-      lastname:dto.lastname,
-      email:dto.email,
-      birth:new Date(dto.birth),
-      country:dto.country,
-      city:dto.city,
-      telegram:dto.telegram,
-      tags: {connect:tags}
-    }, include:{tags:true}
-    });
+    
   }
 
   findAll(name:string, tag:string,country:string, city:string, post:string) {
