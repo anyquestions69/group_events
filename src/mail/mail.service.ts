@@ -8,8 +8,8 @@ import { time } from 'console';
 export class MailService {
   constructor(private mailerService: MailerService) {}
   async sendUserConfirmation(email:string) {
-   
-    await this.mailerService.sendMail({
+   try{
+    return await this.mailerService.sendMail({
       to: email,
       from:process.env.SMTP_EMAIL,
       
@@ -18,6 +18,10 @@ export class MailService {
         http://t.me/bot
       `
     });
+   }catch(e){
+    return e
+   }
+    
   }
   
   
