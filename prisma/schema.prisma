@@ -29,7 +29,7 @@ model Contact {
   updatedAt   DateTime  @updatedAt
   firstname    String
   lastname    String
-  email       String?
+  email       String?   @unique
   whatsapp    String?
   image       String?
   birth       DateTime? @db.Date
