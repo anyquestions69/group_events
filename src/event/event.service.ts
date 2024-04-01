@@ -23,6 +23,7 @@ export class EventService {
       description:dto.description,
       timeStart:new Date(dto.timeStart),
       timeEnd:new Date(dto.timeEnd),
+      every:dto.every,
       contacts:{
         connect:contacts
       }

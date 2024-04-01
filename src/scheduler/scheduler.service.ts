@@ -10,11 +10,11 @@ export class SchedulerService {
        
         let seconds = date.getSeconds().toString()
         let minutes = date.getMinutes().toString()
-        let hours = (date.getHours()-3).toString()
+        let hours = (date.getHours()).toString()
         let day = date.getDate().toString()
-        let month = (date.getMonth()+1).toString()
+        let month = (date.getMonth()).toString()
         switch(every[every.length-1]){
-            case "s":
+            case "s": 
                 seconds+="/"+every.slice(0, -1)
                 break;
             case "m":
