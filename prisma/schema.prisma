@@ -29,7 +29,7 @@ model Contact {
   updatedAt   DateTime  @updatedAt
   firstname    String
   lastname    String
-  email       String?   @unique
+  email       String   @unique
   whatsapp    String?
   image       String?
   birth       DateTime? @db.Date
@@ -41,8 +41,6 @@ model Contact {
   telegram        String?
   languages   Language[]
   groups      Group[]
-  tags        Tag[]
-  events      Event[]
 }
 model Language  {
   id          Int       @id @default(autoincrement())
@@ -52,7 +50,6 @@ model Language  {
 model Tag {
   id        Int       @id @default(autoincrement())
   name      String  @unique
-  contacts   Contact[]
   groups    Group[]
 }
 
@@ -69,7 +66,6 @@ model Event {
   timeEnd        DateTime?
   group       Group?    @relation(fields: [groupId], references: [id])
   groupId     Int
-  contacts    Contact[]
 }
 
 model User {
